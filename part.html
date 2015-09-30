@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Robots</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script>
+document.getElementById('feedback-form').onsubmit = function(){
+  var http = new XMLHttpRequest();
+  http.open("POST", "contacts.php", true);
+  http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  http.send("nameFF=" + this.nameFF.value + "&contactFF=" + this.contactFF.value + "&messageFF=" + this.messageFF.value);
+  http.onreadystatechange = function() {
+    if (http.readyState == 4 && http.status == 200) {
+      alert(http.responseText + ', Ваше сообщение получено.\nНаши специалисты ответят Вам в течении 2-х дней.\nБлагодарим за интерес к нашей фирме!');
+    }
+  }
+  http.onerror = function() {
+    alert('Извините, данные не были переданы');
+  }
+  return false;
+}
+</script>
+	</head>
+<body>
+	<div class="wrapper">
+		<div class="header"></div>
+		<div class="menu">
+			<ul>
+				<li><a href="robots.html">Главная</a></li>			
+				<li><a href="news.html">Новости</a></li>
+				<li><a href="shop.html">Магазин</a></li>
+				<li><a href="part.html">Партнёры</a></li>
+			</ul>
+		</div>
+		<div class="partnr">
+			ДЛЯ ЖЕЛАЮЩИХ СТАТЬ ПАРТНЁРАМИ
+		</div>
+			<form method="POST" id="feedback-form">
+			Как к Вам обращаться:
+			<input type="text" name="nameFF" required placeholder="фамилия 			имя отчество" x-autocompletetype="name">
+			Email для связи:
+			<input type="email" name="contactFF" required placeholder="			адрес электронной почты" x-autocompletetype="email">
+			Ваше сообщение:
+			<textarea name="messageFF" required rows="5"></textarea>
+			<input type="submit" value="отправить">
+			</form>
+		<div class="footer">
+			<table>
+				<tr>
+					<td><a target="_blank" href="https://ru-ru.facebook.com/"><img src="images/facebook.png" width="30px" height="30px"></a> 
+					</td>					
+					<td><a target="_blank" href="https://accounts.google.com/ServiceLogin?service=oz&passive=1209600&continue=https://plus.google.com/photos?hl%3Dru%26gpsrc%3Dgplp0&hl=ru"><img src="images/google plus.png" width="30px" height="30px"></a>
+					</td>
+					<td><a target="_blank" href="https://instagram.com/"><img src="images/instagram2.png" width="30px" height="30px"></a>
+					</td>
+				</tr>
+				<tr>
+					<td><a target="_blank" href="http://www.rss.ru/"><img src="images/rss.png" width="30px" height="30px"></a> 
+					</td>					
+					<td><a target="_blank" href="http://www.skype.com/ru/"><img src="images/skype.png" width="30px" height="30px"></a> 
+					</td>
+					<td><a target="_blank" href="https://vk.com/"><img src="images/vk.png" width="30px" height="30px"></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </div>
+</body>
+</html>
